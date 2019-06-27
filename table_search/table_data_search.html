@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>实现表格的数据搜索</title>
+    <style>
+        #myInput{
+            background-image:url('https://static.runoob.com/images/mix/searchicon.png');
+            background-repeat:no-repeat;
+            background-position:12px 12px;
+            width:100%;
+            padding:12px 20px 12px  40px;
+            margin-bottom:12px;
+            border:1px solid #add;
+
+        }
+
+#myTable {
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+    font-size: 18px;
+}
+        #myTable th,#myTable td{
+            text-align:left;
+            padding:12px;
+        }
+        #myTable tr{
+            border-bottom:1px solid #ddd;
+        }
+        #myTable tr.header,#myTable tr:hover{
+            background-color:#f1f1f1;
+        }
+
+    </style>
+
+</head>
+<body>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="搜索...">
+<table id="myTable">
+    <tr class="header">
+       <th style="width:60%;">名称</th>
+        <th style="width:40%;">城市</th>
+    </tr>
+    <tr>
+        <td>Alfreds Futterkiste</td>
+        <td>Germany</td>
+    </tr>
+    <tr>
+        <td>Berglunds snabbkop</td>
+        <td>Sweden</td>
+    </tr>
+    <tr>
+        <td>Island Trading</td>
+        <td>UK</td>
+    </tr>
+    <tr>
+        <td>Koniglich Essen</td>
+        <td>Germany</td>
+    </tr>
+</table>
+<script>
+ function myFunction(){
+     var input = document.getElementById('myInput');
+    var filter = input.value.toUpperCase();
+    var table = document.getElementById('myTable');
+    var tr = table.getElementsByTagName('tr');
+    for(var i=0;i<tr.length;i++){
+        td = tr[i].getElementsByTagName('td')[0];
+        if(td){
+            if(td.innerHTML.toUpperCase().indexOf(filter)>-1){
+                tr[i].style.display = '';
+            }
+            else{
+                tr[i].style.display = "none";
+            }
+        }
+    }
+ }
+
+</script>
+</body>
+</html>
