@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用javascript实现动画</title>
+    <style>
+       #myContainer{
+        width:400px;
+        height:400px;
+        background:yellow;
+        <!--position:absolute;-->
+       }
+       #myAnimation{
+        width:50px;
+        height:50px;
+        background:red;
+        position:relative;
+       }
+    </style>
+</head>
+<body>
+   <p><button onclick="myMove()">点我</button></p>
+    <div id="myContainer">
+        <div id="myAnimation"></div>
+    </div>
+   <script>
+       function myMove(){
+        var ele = document.getElementById("myAnimation");
+        var pos = 0;
+        var move = setInterval(frame,10);
+        function frame(){
+            if (pos == 350){
+                clearInteval(move);
+            }
+            else{
+                pos++;
+                ele.style.top = pos +"px";
+                ele.style.left = pos +"px";
+            }
+        }
+       }
+   </script>
+</body>
+</html>
